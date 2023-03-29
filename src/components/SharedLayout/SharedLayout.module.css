@@ -1,0 +1,15 @@
+.navLink{
+    margin-left: 20px;
+    color: black;
+    display: inline-block;
+    padding: 8px 0;
+    text-decoration: none;
+}
+
+ .active{
+    color: red
+}
+
+.navLink:hover {
+    color: red
+}
