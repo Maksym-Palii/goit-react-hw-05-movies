@@ -1,27 +1,31 @@
 import fetchDetailsMovi from 'api/apiDetails';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import css from 'pages/MovieDetails/MovieDetails.module.css';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
+  const [error, setError] = useState(null);
 
   const { movieId } = useParams();
 
   useEffect(() => {
     const selectMovie = async () => {
-      const response = await fetchDetailsMovi(movieId);
-      const data = await {
-        foto: `https://image.tmdb.org/t/p/w300${response.poster_path}`,
-        title: response.title,
-        overview: response.overview,
-        genres: response.genres,
-        score: response.vote_average * 10,
-        date: new Date(response.release_date).getFullYear(),
-      };
-      console.log(response);
+      try {
+        const response = await fetchDetailsMovi(movieId);
+        const data = await {
+          foto: `https://image.tmdb.org/t/p/w300${response.poster_path}`,
+          title: response.title,
+          overview: response.overview,
+          genres: response.genres,
+          score: response.vote_average * 10,
+          date: new Date(response.release_date).getFullYear(),
+        };
 
-      setMovie(data);
+        setMovie(data);
+      } catch (error) {
+        setError(error.mesage);
+      }
     };
 
     selectMovie();
@@ -30,6 +34,7 @@ const MovieDetails = () => {
   return (
     <>
       <Link>Go back</Link>
+      {error && <h1>{error}</h1>}
       <div className={css.container}>
         <img src={movie.foto} alt={movie.title} />
         <div className={css.description}>
@@ -47,15 +52,16 @@ const MovieDetails = () => {
           </ul>
         </div>
       </div>
-      <p>Additional information</p>
+      <h3>Additional information</h3>
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="cast"> Cast</Link>
         </li>
         <li>
           <Link to="reviews">Reviews</Link>
         </li>
       </ul>
+      <Outlet />
     </>
   );
 };

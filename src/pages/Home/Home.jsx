@@ -4,24 +4,30 @@ import fetchTrending from 'api/apiTrending';
 
 const Home = () => {
   const [popularMmovies, setPopularMmovies] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const popularMmoviesList = async () => {
-      const response = await fetchTrending();
-      const data = await response.map(el => ({
-        title: el.title,
-        id: el.id,
-      }));
+      try {
+        const response = await fetchTrending();
+        const data = await response.map(el => ({
+          title: el.title,
+          id: el.id,
+        }));
 
-      setPopularMmovies(data);
+        setPopularMmovies(data);
+      } catch (error) {
+        setError(error.mesage);
+      }
     };
+
     popularMmoviesList();
   }, []);
-  console.log(popularMmovies);
 
   return (
     <>
       <h1>Trending today</h1>
+      {error && <h1>{error}</h1>}
       <ul>
         {popularMmovies.map(el => (
           <li key={el.id}>
