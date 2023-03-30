@@ -1,6 +1,7 @@
 import fetchCast from 'api/apiCast';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import css from 'components/Cast/Cast.module.css';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -29,14 +30,14 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
-      <ul>
-        {error && <h1>{error}</h1>}
+    <div className={css.container}>
+      {error && <h1>{error}</h1>}
+      <ul className={css.list}>
         {cast.map(el => (
-          <li key={el.id}>
-            <img src={el.photo} alt={el.name} />
-            <h4>{el.name}</h4>
-            <p>Character: {el.character}</p>
+          <li className={css.listItem} key={el.id}>
+            <img className={css.img} src={el.photo} alt={el.name} />
+            <h4 className={css.title}>{el.name}</h4>
+            <p className={css.text}>Character: {el.character}</p>
           </li>
         ))}
       </ul>

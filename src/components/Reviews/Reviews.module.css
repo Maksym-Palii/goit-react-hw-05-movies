@@ -1,0 +1,36 @@
+.container {
+    padding: 20px 0px;
+}
+
+.list {
+    list-style: none;
+}
+
+.listItem {
+    margin-left: 20px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 12px;
+}
+
+.img {
+    margin-bottom: 8px;
+    max-width: 150px;
+    height: auto;
+}
+
+.title {
+    padding: 4px 8px;
+    font-size: 18px;
+    line-height: 1.25;
+}
+
+.text {
+    padding: 4px 8px;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+
+}
+
+/* *{
+    outline: 1px solid tomato;
+} */

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import css from 'components/SearchForm/SearchForm.module.css';
 
 const SearchForm = ({ submit }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,18 +26,20 @@ const SearchForm = ({ submit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={css.form} onSubmit={handleSubmit}>
       <input
+        className={css.input}
         onChange={handleChange}
         name="searchQuery"
         value={searchQuery}
-        className=""
         type="text"
         autoComplete="off"
         autoFocus
         placeholder="Search movies"
       />
-      <button type="submit">Search</button>
+      <button className={css.btn} type="submit">
+        Search
+      </button>
     </form>
   );
 };

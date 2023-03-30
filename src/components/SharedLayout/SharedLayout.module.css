@@ -1,9 +1,17 @@
+.header{
+
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
 .navLink{
     margin-left: 20px;
     color: black;
     display: inline-block;
-    padding: 8px 0;
+    padding: 12px 0;
     text-decoration: none;
+    font-size: 22px;
+    line-height: 1.3;
+
 }
 
  .active{
@@ -12,4 +20,7 @@
 
 .navLink:hover {
     color: red
+}
+.main{
+    margin-left: 50px;
 }

@@ -1,0 +1,20 @@
+.container{
+    padding: 20px;
+    min-width: 1160px;
+    
+}
+
+.title{
+margin-bottom: 12px;
+}
+
+.list{
+    margin-bottom: 4px;
+    padding: 4px;
+    margin-left: 20px;
+}
+
+.link:hover,
+.link:focus{
+    color: red;
+}

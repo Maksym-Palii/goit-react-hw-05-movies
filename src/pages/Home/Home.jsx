@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fetchTrending from 'api/apiTrending';
+import css from 'pages/Home/Home.module.css';
 
 const Home = () => {
   const [popularMmovies, setPopularMmovies] = useState([]);
@@ -25,17 +26,19 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <h1>Trending today</h1>
+    <div className={css.container}>
+      <h1 className={css.title}>Trending today</h1>
       {error && <h1>{error}</h1>}
       <ul>
         {popularMmovies.map(el => (
-          <li key={el.id}>
-            <Link to={`movies/${el.id}`}>{el.title}</Link>
+          <li key={el.id} className={css.list}>
+            <Link className={css.link} to={`movies/${el.id}`}>
+              {el.title}
+            </Link>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

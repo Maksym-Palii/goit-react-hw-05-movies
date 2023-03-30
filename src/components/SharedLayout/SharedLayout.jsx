@@ -4,7 +4,7 @@ import css from 'components/SharedLayout/SharedLayout.module.css';
 const SharedLayout = () => {
   return (
     <div>
-      <header>
+      <header className={css.header}>
         <nav>
           <NavLink className={css.navLink} to="/">
             Home

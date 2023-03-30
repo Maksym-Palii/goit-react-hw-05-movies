@@ -1,7 +1,48 @@
 .container{
     display: flex;
+    margin-bottom: 20px;
+}
+
+.linkBack{
+    display: inline-block;
+    margin: 4px;
+    padding: 4px 8px;
+    font-size: 16px;
+    font-weight: 1.2;
 }
 
 .description{
     padding: 20px;
 }
+
+.title{
+    margin-bottom: 12px;
+}
+
+.text{
+    margin-bottom: 18px;
+}
+
+.list{
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+
+.informationTitle{
+    margin-bottom: 12px;
+}
+
+.informationList{
+    list-style: none;
+        margin-bottom: 8px;
+}
+
+.informationListItem{
+    margin-left: 20px;
+    margin-bottom: 8px;
+    /* padding: 4px 0; */
+}
+
+/* *{
+    outline: 1px solid tomato;
+} */

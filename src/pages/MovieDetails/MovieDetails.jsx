@@ -18,7 +18,7 @@ const MovieDetails = () => {
           title: response.title,
           overview: response.overview,
           genres: response.genres,
-          score: response.vote_average * 10,
+          score: Math.round(response.vote_average * 10),
           date: new Date(response.release_date).getFullYear(),
         };
 
@@ -32,37 +32,41 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <>
-      <Link>Go back</Link>
+    <div>
+      <Link className={css.linkBack}>Go back</Link>
       {error && <h1>{error}</h1>}
       <div className={css.container}>
         <img src={movie.foto} alt={movie.title} />
         <div className={css.description}>
-          <h1>
+          <h1 className={css.title}>
             {movie.title} ({movie.date})
           </h1>
-          <p>User Score: {movie.score}%</p>
-          <h2>Overview</h2>
-          <p>{movie.overview}</p>
-          <h2>Genres</h2>
+          <p className={css.text}>User Score: {movie.score}%</p>
+          <h2 className={css.title}>Overview</h2>
+          <p className={css.text}>{movie.overview}</p>
+          <h2 className={css.title}>Genres</h2>
           <ul>
             {movie.genres?.map(el => (
-              <li key={el.id}>{el.name}</li>
+              <li className={css.list} key={el.id}>
+                {el.name}
+              </li>
             ))}
           </ul>
         </div>
       </div>
-      <h3>Additional information</h3>
-      <ul>
-        <li>
+      <h3 className={css.informationTitle}>Additional information</h3>
+      <ul className={css.informationList}>
+        <li className={css.informationListItem}>
           <Link to="cast"> Cast</Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link className={css.informationListItem} to="reviews">
+            Reviews
+          </Link>
         </li>
       </ul>
       <Outlet />
-    </>
+    </div>
   );
 };
 
