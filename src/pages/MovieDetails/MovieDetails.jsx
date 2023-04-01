@@ -1,6 +1,6 @@
 import fetchDetailsMovi from 'api/apiDetails';
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from 'pages/MovieDetails/MovieDetails.module.css';
 
 const MovieDetails = () => {
@@ -8,6 +8,10 @@ const MovieDetails = () => {
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
+  const location = useLocation();
+  // const backLinkHref = location.state?.from ?? '/';
+
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const selectMovie = async () => {
@@ -33,7 +37,9 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <Link className={css.linkBack}>Go back</Link>
+      <Link to={backLinkHref.current} className={css.linkBack}>
+        Go back
+      </Link>
       {error && <h1>{error}</h1>}
       <div className={css.container}>
         <img src={movie.foto} alt={movie.title} />
@@ -65,7 +71,9 @@ const MovieDetails = () => {
           </Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
