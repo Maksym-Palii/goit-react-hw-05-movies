@@ -8,6 +8,8 @@ const Movies = () => {
   // const [sentSearchQuery, setSentSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const movi = searchParams.get('movi');
 
   const hendleFormSubmit = searchQuery => {
     setMovies([]);
