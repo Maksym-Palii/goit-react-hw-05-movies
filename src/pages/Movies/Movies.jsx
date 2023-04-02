@@ -1,22 +1,17 @@
-import SearchForm from 'components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
-import fetchSearchsMovi from 'api/apiSearch';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import fetchSearchsMovi from 'api/apiSearch';
+import SearchForm from '../../components/SearchForm/SearchForm';
 import css from 'pages/Movies/Movies.module.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
-  // const [sentSearchQuery, setSentSearchQuery] = useState('');
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const movi = searchParams.get('movi');
-
   const [searchParams, setSearchParams] = useSearchParams();
   const sentSearchQuery = searchParams.get('name') ?? '';
 
   const hendleFormSubmit = searchQuery => {
-    // setMovies([]);
     updateQueryString(searchQuery);
     setError(null);
   };
