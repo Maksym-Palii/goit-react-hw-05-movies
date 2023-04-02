@@ -28,7 +28,7 @@ const Movies = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const popularMmoviesList = async () => {
+    const serchMmoviesList = async () => {
       try {
         const response = await fetchSearchsMovi(sentSearchQuery);
         if (response.results.length === 0) {
@@ -45,7 +45,7 @@ const Movies = () => {
     };
 
     if (sentSearchQuery) {
-      popularMmoviesList();
+      serchMmoviesList();
     }
   }, [sentSearchQuery]);
 
