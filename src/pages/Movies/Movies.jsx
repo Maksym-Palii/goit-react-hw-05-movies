@@ -47,6 +47,21 @@ const Movies = () => {
 
   return (
     <div className={css.container}>
+      {/* ====== */}
+      <form className={css.form}>
+        <input
+          className={css.input}
+          // onChange={handleChange}
+          name="searchQuery"
+          // value={searchQuery}
+          type="text"
+          placeholder="Search movies"
+        />
+        <button className={css.btn} type="submit">
+          Search
+        </button>
+      </form>
+      {/* ======== */}
       <SearchForm submit={hendleFormSubmit} />
       {error && <h1>{error}</h1>}
       <ul>
