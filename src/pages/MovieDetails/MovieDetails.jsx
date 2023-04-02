@@ -17,16 +17,18 @@ const MovieDetails = () => {
     const selectMovie = async () => {
       try {
         const response = await fetchDetailsMovi(movieId);
-        const data = await {
-          foto: `https://image.tmdb.org/t/p/w300${response.poster_path}`,
-          title: response.title,
-          overview: response.overview,
-          genres: response.genres,
-          score: Math.round(response.vote_average * 10),
-          date: new Date(response.release_date).getFullYear(),
-        };
+        if (response) {
+          const data = {
+            foto: `https://image.tmdb.org/t/p/w300${response.poster_path}`,
+            title: response.title,
+            overview: response.overview,
+            genres: response.genres,
+            score: Math.round(response.vote_average * 10),
+            date: new Date(response.release_date).getFullYear(),
+          };
 
-        setMovie(data);
+          setMovie(data);
+        }
       } catch (error) {
         setError(error.mesage);
       }
