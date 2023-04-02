@@ -12,7 +12,7 @@ const Movies = () => {
   // const movi = searchParams.get('movi');
 
   const hendleFormSubmit = searchQuery => {
-    setMovies([]);
+    // setMovies([]);
     updateQueryString(searchQuery);
     setError(null);
   };
@@ -20,10 +20,10 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sentSearchQuery = searchParams.get('name') ?? '';
 
-  const updateQueryString = name => {
+  function updateQueryString(name) {
     const nextParams = name !== '' ? { name } : {};
     setSearchParams(nextParams);
-  };
+  }
 
   const location = useLocation();
 
