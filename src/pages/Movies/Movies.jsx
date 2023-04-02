@@ -5,20 +5,21 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import css from 'pages/Movies/Movies.module.css';
 
 const Movies = () => {
-  // const [sentSearchQuery, setSentSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
+
+  // const [sentSearchQuery, setSentSearchQuery] = useState('');
   // const [searchParams, setSearchParams] = useSearchParams();
   // const movi = searchParams.get('movi');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sentSearchQuery = searchParams.get('name') ?? '';
 
   const hendleFormSubmit = searchQuery => {
     // setMovies([]);
     updateQueryString(searchQuery);
     setError(null);
   };
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const sentSearchQuery = searchParams.get('name') ?? '';
 
   function updateQueryString(name) {
     const nextParams = name !== '' ? { name } : {};
