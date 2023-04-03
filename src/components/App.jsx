@@ -11,7 +11,7 @@ const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 const NotFound = lazy(() => import('./NotFound/NotFound'));
 
-export const App = () => {
+const App = () => {
   return (
     <div className={css.container}>
       <Routes>
@@ -28,3 +28,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default App;
